@@ -1,4 +1,4 @@
-FROM notyy/ubuntu14_jre8:v1
+FROM notyy/ubuntu14_jre7:v1
 MAINTAINER notyycn <notyycn@gmail.com>
 RUN sudo apt-get install -qq -y wget
 RUN sudo apt-get install -qq -y unzip
