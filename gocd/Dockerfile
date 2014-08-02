@@ -7,7 +7,6 @@ RUN wget http://download.go.cd/gocd-deb/go-server-14.2.0-377.deb
 RUN sudo mkdir /var/lib/go-server
 RUN mkdir /var/go
 RUN sudo useradd -d /var/go go
-RUN sudo mkdir /var/lib/go-server
 RUN sudo chown go /var/lib/go-server
 RUN sudo dpkg -i go-server-14.2.0-377.deb
 RUN sudo apt-get -qq clean
