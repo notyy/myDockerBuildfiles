@@ -2,7 +2,7 @@ FROM notyy/ubuntu14_jre8:v1
 MAINTAINER notyycn <notyycn@gmail.com>
 RUN sudo apt-get install -qq -y wget
 RUN sudo apt-get install -qq -y unzip
-RUN sudo cd /tmp
+RUN cd /tmp
 RUN wget http://download.go.cd/gocd-deb/go-server-14.2.0-377.deb
 RUN dpkg -i go-server-14.2.0-377.deb
 RUN sudo apt-get -qq clean
