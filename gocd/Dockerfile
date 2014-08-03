@@ -12,4 +12,4 @@ RUN sudo dpkg -i go-server-14.2.0-377.deb
 RUN sudo apt-get -qq clean
 RUN sudo rm -rf /tmp/go-server-14.2.0-377.deb
 EXPOSE 8153
-# RUN sudo /etc/init.d/go-server start
+CMD sudo /etc/init.d/go-server start
