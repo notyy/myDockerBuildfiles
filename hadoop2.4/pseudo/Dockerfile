@@ -3,7 +3,7 @@
 
 FROM notyy/hadoop-single:2.4.1
 MAINTAINER notyycn <notyycn@gmail.com>
-ENV PATH $PATH:$JAVA_HOME/bin
+#ENV PATH $PATH:$JAVA_HOME/bin
 ENV HADOOP_PREFIX /usr/local/hadoop
 
 RUN sed -i '/^export JAVA_HOME/ s:.*:export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64\nexport HADOOP_PREFIX=/usr/local/hadoop\nexport HADOOP_HOME=/usr/local/hadoop\n:' $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh
