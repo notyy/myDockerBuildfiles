@@ -3,6 +3,8 @@ MAINTAINER notyycn <notyycn@gmail.com>
 RUN sudo apt-get -qq -y install ssh openssh-server openssh-client rsync
 RUN ssh-keygen -t dsa -P '' -f /root/.ssh/id_dsa
 RUN cat /root/.ssh/id_dsa.pub >> /root/.ssh/authorized_keys
+RUN mkdir /var/run/sshd
+RUN /usr/sbin/sshd
 ADD core-site.xml /usr/local/hadoop/etc/hadoop/
 ADD hdfs-site.xml /usr/local/hadoop/etc/hadoop/
 WORKDIR /usr/local/hadoop
