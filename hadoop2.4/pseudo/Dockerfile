@@ -16,6 +16,9 @@ ADD core-site.xml /usr/local/hadoop/etc/hadoop/
 ADD hdfs-site.xml /usr/local/hadoop/etc/hadoop/
 WORKDIR /usr/local/hadoop
 RUN bin/hdfs namenode -format
+
+ENV HADOOP_COMMON_LIB_NATIVE_DIR $HADOOP_PREFIX/lib/native
+ENV HADOOP_OPTS "-Djava.library.path=$HADOOP_PREFIX/lib"
 RUN sbin/start-dfs.sh
 
 CMD /bin/bash
