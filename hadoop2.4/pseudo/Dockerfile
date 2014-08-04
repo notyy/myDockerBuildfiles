@@ -12,11 +12,14 @@ RUN sed -i '/^export HADOOP_CONF_DIR/ s:.*:export HADOOP_CONF_DIR=/usr/local/had
 RUN sudo apt-get -qq -y install openssh-server openssh-client rsync
 
 # passwordless ssh
-RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key
-RUN ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key
-RUN ssh-keygen -q -N "" -t rsa -f /root/.ssh/id_rsa
-RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
+# RUN ssh-keygen -q -N "" -t dsa -f /etc/ssh/ssh_host_dsa_key
+# RUN ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key
+# RUN ssh-keygen -q -N "" -t rsa -f /root/.ssh/id_rsa
+# RUN cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys
 
+RUN cd /root && ssh-keygen -t dsa -P '' -f "/root/.ssh/id_dsa" \
+ && cat /root/.ssh/id_dsa.pub >> /root/.ssh/authorized_keys && chmod 644 /root/.ssh/authorized_keys
+ 
 ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
 ENV PATH $PATH:$JAVA_HOME/bin
 ENV USER root
