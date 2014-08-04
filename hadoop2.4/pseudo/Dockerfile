@@ -13,7 +13,7 @@ RUN sudo apt-get -qq -y install ssh openssh-server openssh-client rsync
 RUN ssh-keygen -t dsa -P '' -f /root/.ssh/id_dsa
 RUN cat /root/.ssh/id_dsa.pub >> /root/.ssh/authorized_keys
 RUN mkdir /var/run/sshd
-ADD ssh_config /root/.ssh/config
+ADD ssh-config /root/.ssh/config
 RUN chmod 600 /root/.ssh/config
 RUN chown root:root /root/.ssh/config
 # fix the 254 error code
