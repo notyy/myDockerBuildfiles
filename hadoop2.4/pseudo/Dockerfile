@@ -17,8 +17,11 @@ ADD hdfs-site.xml /usr/local/hadoop/etc/hadoop/
 WORKDIR /usr/local/hadoop
 RUN bin/hdfs namenode -format
 
-ENV HADOOP_COMMON_LIB_NATIVE_DIR $HADOOP_PREFIX/lib/native
-ENV HADOOP_OPTS "-Djava.library.path=$HADOOP_PREFIX/lib"
+#ENV HADOOP_COMMON_LIB_NATIVE_DIR $HADOOP_PREFIX/lib/native
+# ENV HADOOP_OPTS "-Djava.library.path=$HADOOP_PREFIX/lib"
+# fixing the libhadoop.so like a boss
+RUN rm  /usr/local/hadoop/lib/native/*
+RUN curl -Ls http://dl.bintray.com/sequenceiq/sequenceiq-bin/hadoop-native-64-2.4.1.tar|tar -x -C /usr/local/hadoop/lib/native/
 RUN sbin/start-dfs.sh
 
 CMD /bin/bash
