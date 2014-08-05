@@ -25,7 +25,8 @@ ENV PATH $PATH:$JAVA_HOME/bin
 ENV USER root
 
 # cluster master(namenode)
-RUN mkdir /var/hadoopdata/hdfs/nn
+RUN mkdir -p /var/hadoopdata/hdfs/nn
+RUN mkdir -p /var/hadoopdata/hdfs/dn
 # ADD core-site.xml.template $HADOOP_PREFIX/etc/hadoop/core-site.xml.template
 # RUN sed s/HOSTNAME/localhost/ /usr/local/hadoop/etc/hadoop/core-site.xml.template > /usr/local/hadoop/etc/hadoop/core-site.xml
 ADD core-site.xml $HADOOP_PREFIX/etc/hadoop/core-site.xml
