@@ -76,8 +76,8 @@ ENV HADOOP_CONF_DIR /usr/local/hadoop/etc/hadoop
 RUN apt-get install -qq -y vim
 
 RUN service ssh start
-RUN bin/hdfs namenode -format
-RUN sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs start namenode
+# RUN bin/hdfs namenode -format
+RUN sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs start datanode
 
 CMD ["/etc/bootstrap.sh", "-d"]
 
