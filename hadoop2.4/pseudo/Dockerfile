@@ -54,7 +54,7 @@ ENV BOOTSTRAP /etc/bootstrap.sh
 # fix the 254 error code
 RUN sed  -i "/^[^#]*UsePAM/ s/.*/#&/"  /etc/ssh/sshd_config
 RUN echo "UsePAM no" >> /etc/ssh/sshd_config
-# RUN echo "Port 2122" >> /etc/ssh/sshd_config
+RUN echo "Port 2122" >> /etc/ssh/sshd_config
 
 #try put some data for test
 RUN mkdir $HADOOP_PREFIX/input
