@@ -4,8 +4,8 @@
         <value>3</value>
     </property>
     <property>
-    <name>dfs.hosts</name>
-        <value>/dev/null</value>
+        <name>dfs.namenode.datanode.registration.ip-hostname-check</name>
+        <value>false</value>
     </property>
     <property>
         <name>dfs.namenode.name.dir</name>
