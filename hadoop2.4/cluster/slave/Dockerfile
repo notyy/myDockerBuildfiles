@@ -75,6 +75,7 @@ WORKDIR /usr/local/hadoop
 ENV HADOOP_CONF_DIR /usr/local/hadoop/etc/hadoop
 RUN apt-get install -qq -y vim
 
+RUN service ssh start
 RUN bin/hdfs namenode -format
 RUN sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs start namenode
 
