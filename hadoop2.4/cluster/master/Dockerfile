@@ -3,6 +3,9 @@
 
 FROM notyy/hadoop-single:2.4.1
 MAINTAINER notyycn <notyycn@gmail.com>
+
+RUN apt-get install -qq -y vim
+
 #ENV PATH $PATH:$JAVA_HOME/bin
 ENV HADOOP_PREFIX /usr/local/hadoop
 
@@ -73,7 +76,6 @@ RUN ls -la /usr/local/hadoop/etc/hadoop/*-env.sh
 
 WORKDIR /usr/local/hadoop
 ENV HADOOP_CONF_DIR /usr/local/hadoop/etc/hadoop
-RUN apt-get install -qq -y vim
 
 # RUN service ssh start
 RUN bin/hdfs namenode -format
