@@ -13,6 +13,8 @@ service ssh start
 # $HADOOP_PREFIX/sbin/start-dfs.sh
 # $HADOOP_PREFIX/sbin/start-yarn.sh
 $HADOOP_PREFIX/sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs start datanode
+$HADOOP_PREFIX/sbin/yarn-daemon.sh --config $HADOOP_CONF_DIR start nodemanager
+
 if [[ $1 == "-d" ]]; then
   while true; do sleep 1000; done
 fi
