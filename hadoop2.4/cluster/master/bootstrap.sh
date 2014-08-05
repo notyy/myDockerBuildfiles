@@ -10,7 +10,7 @@ rm /tmp/*.pid
 cd $HADOOP_PREFIX/share/hadoop/common ; for cp in ${ACP//,/ }; do  echo == $cp; curl -LO $cp ; done; cd -
 
 service ssh start
-$HADOOP_PREFIX sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs start namenode
+# $HADOOP_PREFIX sbin/hadoop-daemon.sh --config $HADOOP_CONF_DIR --script hdfs start namenode
 
 # $HADOOP_PREFIX/sbin/start-dfs.sh
 # $HADOOP_PREFIX/sbin/start-yarn.sh
