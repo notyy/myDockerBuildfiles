@@ -4,6 +4,10 @@
         <value>3</value>
     </property>
     <property>
+    <name>dfs.hosts</name>
+        <value>/dev/null</value>
+    </property>
+    <property>
         <name>dfs.namenode.name.dir</name>
         <value>file:///var/hadoopdata/hdfs/nn</value>
     </property>
