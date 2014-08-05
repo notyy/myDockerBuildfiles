@@ -68,7 +68,7 @@ RUN ls -la /usr/local/hadoop/etc/hadoop/*-env.sh
 RUN service ssh start && $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh && $HADOOP_PREFIX/sbin/start-dfs.sh && $HADOOP_PREFIX/bin/hdfs dfs -mkdir -p /user/root
 RUN /usr/sbin/sshd && $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh && $HADOOP_PREFIX/sbin/start-dfs.sh && $HADOOP_PREFIX/bin/hdfs dfs -put $HADOOP_PREFIX/etc/hadoop/ input
 
-WORKDIR $HADOOP_PREFIX
+WORKDIR /usr/local/hadoop
 
 CMD ["/etc/bootstrap.sh", "-d"]
 
