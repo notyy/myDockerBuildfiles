@@ -26,6 +26,7 @@ RUN cd /root && ssh-keygen -t dsa -P '' -f "/root/.ssh/id_dsa" \
 ENV JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
 ENV PATH $PATH:$JAVA_HOME/bin
 ENV USER root
+ENV HADOOP_CONF_DIR /usr/local/hadoop/etc/hadoop
 
 # cluster master(namenode)
 RUN mkdir -p /var/hadoopdata/hdfs/nn
@@ -50,12 +51,6 @@ ADD ssh-config /root/.ssh/config
 RUN chmod 600 /root/.ssh/config
 RUN chown root:root /root/.ssh/config
 
-ADD bootstrap.sh /etc/bootstrap.sh
-RUN chown root:root /etc/bootstrap.sh
-RUN chmod 700 /etc/bootstrap.sh
-
-ENV BOOTSTRAP /etc/bootstrap.sh
-
 # fix the 254 error code
 RUN sed  -i "/^[^#]*UsePAM/ s/.*/#&/"  /etc/ssh/sshd_config
 RUN echo "UsePAM no" >> /etc/ssh/sshd_config
@@ -75,10 +70,14 @@ RUN ls -la /usr/local/hadoop/etc/hadoop/*-env.sh
 # RUN service ssh start && $HADOOP_PREFIX/etc/hadoop/hadoop-env.sh && $HADOOP_PREFIX/sbin/start-dfs.sh && $HADOOP_PREFIX/bin/hdfs dfs -put $HADOOP_PREFIX/etc/hadoop/ input
 
 WORKDIR /usr/local/hadoop
-ENV HADOOP_CONF_DIR /usr/local/hadoop/etc/hadoop
-
 # RUN service ssh start
 RUN bin/hdfs namenode -format
+
+ADD bootstrap.sh /etc/bootstrap.sh
+RUN chown root:root /etc/bootstrap.sh
+RUN chmod 700 /etc/bootstrap.sh
+
+ENV BOOTSTRAP /etc/bootstrap.sh
 
 CMD ["/etc/bootstrap.sh", "-d"]
 
