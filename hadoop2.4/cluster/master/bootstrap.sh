@@ -9,9 +9,9 @@ rm /tmp/*.pid
 # installing libraries if any - (resource urls added comma separated to the ACP system variable)
 cd $HADOOP_PREFIX/share/hadoop/common ; for cp in ${ACP//,/ }; do  echo == $cp; curl -LO $cp ; done; cd -
 
-/usr/sbin/sshd
-$HADOOP_PREFIX/sbin/start-dfs.sh
-$HADOOP_PREFIX/sbin/start-yarn.sh
+service ssh start
+# $HADOOP_PREFIX/sbin/start-dfs.sh
+# $HADOOP_PREFIX/sbin/start-yarn.sh
 
 if [[ $1 == "-d" ]]; then
   while true; do sleep 1000; done

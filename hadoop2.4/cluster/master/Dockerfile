@@ -42,7 +42,7 @@ ADD yarn-site.xml $HADOOP_PREFIX/etc/hadoop/yarn-site.xml
 RUN rm  /usr/local/hadoop/lib/native/*
 RUN curl -Ls http://dl.bintray.com/sequenceiq/sequenceiq-bin/hadoop-native-64-2.4.1.tar|tar -x -C /usr/local/hadoop/lib/native/
 
-# RUN mkdir /var/run/sshd
+RUN mkdir /var/run/sshd
 ADD ssh-config /root/.ssh/config
 RUN chmod 600 /root/.ssh/config
 RUN chown root:root /root/.ssh/config
