@@ -9,6 +9,7 @@ docker run --name=namenode -ti -h=namenode -p 50070:50070 -p 8088:8088 -p 19888:
 docker run --name=datanode1 -d -h=datanode1 --link namenode:namenode notyy/hadoop-slave:2.4.1
 docker run --name=datanode2 -d -h=datanode2 --link namenode:namenode notyy/hadoop-slave:2.4.1
 docker run --name=datanode3 -d -h=datanode3 --link namenode:namenode notyy/hadoop-slave:2.4.1
+docker run --name=datanode4 -d -h=datanode4 --link namenode:namenode notyy/hadoop-slave:2.4.1
 
 docker run --name=datanode1 -ti -h=datanode1 --link namenode:namenode notyy/hadoop-slave:2.4.1 /etc/bootstrap.sh -bash
 
